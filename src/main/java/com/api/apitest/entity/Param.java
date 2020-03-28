@@ -3,7 +3,7 @@ package com.api.apitest.entity;
 import lombok.Data;
 
 /**
- * @author zqk
+ * @author zengxueqi
  * @since 2020/2/3
  */
 @Data

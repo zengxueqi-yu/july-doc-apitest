@@ -19,21 +19,21 @@ public class JulyDocSpringController {
     private Logger logger = LoggerFactory.getLogger(JulyDocSpringController.class);
 
     /**
-     * 自动化工具方法
-     * @param: [apiParam]
-     * @return: ApiResult<java.lang.String>
-     * @author: zengxueqi
-     * @since: 2020/2/25
+     * Api请求测试
+     * @param apiParam
+     * @return com.api.apitest.config.ApiResult<java.lang.String>
+     * @author zengxueqi
+     * @since 2020/3/28
      */
     @PostMapping("/test")
     @ResponseBody
     public ApiResult<String> apiTest(@RequestBody ApiRequestParam apiParam) {
         if(Constants.REQUEST_GET.equals(apiParam.getMethod())){
             return ApiResult.ok(ApiTestUtil.httpGet(apiParam));
-        }else{
+        }else if(Constants.REQUEST_POST.equals(apiParam.getMethod())){
             return ApiResult.ok(ApiTestUtil.httpPost(apiParam));
         }
-
+        return ApiResult.fail("没有找到" + apiParam.getMethod() + "请求方式！");
     }
 
 }

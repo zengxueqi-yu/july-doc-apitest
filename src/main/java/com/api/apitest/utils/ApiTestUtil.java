@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * 请求方式处理类
- * @author zqk
+ * @author zengxueqi
  * @since 2020/2/3
  */
 public class ApiTestUtil {
@@ -28,7 +28,7 @@ public class ApiTestUtil {
      * 模拟Get请求
      * @param apiParam
      * @return java.lang.String
-     * @author zqk
+     * @author zengxueqi
      * @since 2020/2/3 12:30 下午
      */
     public static String httpGet(ApiRequestParam apiParam) {
@@ -38,6 +38,13 @@ public class ApiTestUtil {
         //设置请求和传输超时时间
         RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(30000).setConnectTimeout(30000).build();
         request.setConfig(requestConfig);
+        //设置请求头信息
+        List<Param> paramList = apiParam.getHeaders();
+        if(!CollectionUtils.isEmpty(paramList)){
+            for (Param param : paramList) {
+                request.addHeader(param.getName(),param.getValue());
+            }
+        }
         try {
             CloseableHttpResponse response = client.execute(request);
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -55,7 +62,7 @@ public class ApiTestUtil {
      * 模拟Post请求
      * @param apiParam
      * @return java.lang.String
-     * @author zqk
+     * @author zengxueqi
      * @since 2020/2/3 12:30 下午
      */
     public static String httpPost(ApiRequestParam apiParam) {
@@ -68,6 +75,7 @@ public class ApiTestUtil {
                     "utf-8");
             //httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
             httpPost.setEntity(postingString);
+            //设置请求头信息
             List<Param> paramList = apiParam.getHeaders();
             if(!CollectionUtils.isEmpty(paramList)){
                 for (Param param : paramList) {
