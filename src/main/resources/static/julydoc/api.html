@@ -1,62 +1,63 @@
 <!DOCTYPE html>
-<!-- saved from url=(0027)http://www.36nu.com/apiTest -->
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <title>在线接口测试工具</title>
-    <link rel="shortcut icon" href="http://www.36nu.com/36nu.ico">
-    <link rel="stylesheet" href="./bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="./style.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="http.css">
-    <link rel="stylesheet" type="text/css" href="./jquery.dialogbox.css">
-    <link rel="stylesheet" href="./jsoneditor.css">
+    <link rel="shortcut icon" href="https://github.com/zengxueqi-yu">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../css/http.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery.dialogbox.css">
+    <link rel="stylesheet" href="../css/jsoneditor.css">
+    <style>
+        #param_content {
+            display: none;
+        }
+
+        #add_url_parameter_hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
 <div class="top navbar-inverse">
     <div class="container">
         <nav class="collapse navbar-collapse bs-navbar-collapse" rol="navigation">
-            <ul class="nav navbar-nav navbar-right manuscript">
-
-            </ul>
+            <ul class="nav navbar-nav navbar-right manuscript"></ul>
         </nav>
     </div>
 </div>
 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
     <div class="container">
         <div class="navbar-header">
-
             <a href="#" class="navbar-brand"
-               style="font-style: italic;margin-left: 10px;line-height: 70px;letter-spacing: 4px;color: #00d1b2;font-size: 20px">July Api Test</a>
+               style="font-style: italic;margin-left: 10px;line-height: 70px;letter-spacing: 4px;color: #00d1b2;font-size: 20px">July
+                Api Test</a>
         </div>
-        <nav class="collapse navbar-collapse " role="navigation">
-
-
-        </nav>
+        <nav class="collapse navbar-collapse " role="navigation"></nav>
     </div>
 </header>
 <div class="container wrap page-idx" id="page_idx">
     <div class="row">
         <div class="pull-left wrap-left">
-
             <div class="clearfix shadow-box mod-info-flow">
-
                 <div class="main-http">
                     <div id="params_start" class="table">
                         <div class="pull-left row_h">
                             <select id="api_method" class="select form-control">
                                 <option value="GET">GET</option>
                                 <option value="POST" selected="">POST</option>
-                                <option value="PUT">PUT</option>
-                                <option value="PATCH">PATCH</option>
-                                <option value="DELETE">DELETE</option>
-                                <option value="COPY">COPY</option>
-                                <option value="HEAD">HEAD</option>
-                                <option value="OPTIONS">OPTIONS</option>
-                                <option value="LINK">LINK</option>
-                                <option value="UNLINK">UNLINK</option>
-                                <option value="PURGE">PURGE</option>
+                                <option value="PUT">PUT - Not Support</option>
+                                <option value="PATCH">PATCH - Not Support</option>
+                                <option value="DELETE">DELETE - Not Support</option>
+                                <option value="COPY">COPY - Not Support</option>
+                                <option value="HEAD">HEAD - Not Support</option>
+                                <option value="OPTIONS">OPTIONS - Not Support</option>
+                                <option value="LINK">LINK - Not Support</option>
+                                <option value="UNLINK">UNLINK - Not Support</option>
+                                <option value="PURGE">PURGE - Not Support</option>
                             </select>
                         </div>
                         <div class="pull-left row_url">
@@ -68,15 +69,19 @@
                     <table id="params_table" class="table table-bordered">
                         <thead>
                         <tr>
-                            <th width="35%">Body参数名称</th>
-                            <th>Body参数值</th>
+                            <th colspan="2">Body参数名称</th>
+                        </tr>
+                        <tr id="param_content">
+                            <th colspan="2">
+                                <div id="jsoneditor1"></div>
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr id="params_end">
                             <td colspan="2">
-                                <button class="btn btn-warning" id="add_url_parameter" type="button">添加参数</button>
-                                <button class="btn btn-primary" id="add_raw_url_parameter" type="button">批量添加</button>
+                                <button class="btn btn-warning" id="add_url_parameter_show" type="button">添加参数</button>
+                                <button class="btn btn-warning" id="add_url_parameter_hide" type="button">隐藏参数</button>
                             </td>
                         </tr>
                         </tbody>
@@ -98,37 +103,18 @@
                     </table>
                     <div id="jsoneditor"></div>
                     <table id="response_table" class="table table-bordered">
-
-                        <!--<thead>
-                            <tr>
-                                <th width="35%">Response</th>
-                                <th>Response Body</th>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td valign="top" id="response_header"></td>
-                                <td valign="top">
-                                    <textarea id="output"></textarea>
-                                </td>
-                            </tr>
-                        </tbody>-->
                     </table>
                 </div>
-
             </div>
         </div>
-
     </div>
 </div>
 <input type="hidden" name="_token" id="_token" value="FVcorniV5FHDXSfiSG7QdRcqpR69ybxfJn0SCDeO">
-<script src="./在线接口测试工具 _ 36nu_files/hm.js"></script>
-<script src="common.js" type="text/javascript"></script>
-<script type="text/javascript" src="jquery.dialogbox.js"></script>
-<script type="text/javascript" src="jsoneditor.js"></script>
-<script type="text/javascript" src="http.js"></script>
-<script type="text/javascript" src="jquery.cookie.min.js"></script>
+<script src="../js/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/jquery.dialogbox.js"></script>
+<script type="text/javascript" src="../js/jsoneditor.js"></script>
+<script type="text/javascript" src="../js/http.js"></script>
+<script type="text/javascript" src="../js/jquery.cookie.min.js"></script>
 <script>
     var _hmt = _hmt || [];
     (function () {
@@ -138,7 +124,5 @@
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
-
-
 </body>
 </html>

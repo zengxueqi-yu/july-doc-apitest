@@ -104,7 +104,7 @@ $("#http_test").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "/api/test",
+        url: "/julydoc/test",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify(param),

@@ -1,22 +1,22 @@
-package com.api.apitest.controller;
+package com.api.apitest.boot;
 
 import com.api.apitest.config.ApiResult;
 import com.api.apitest.config.Constants;
 import com.api.apitest.entity.ApiRequestParam;
 import com.api.apitest.utils.ApiTestUtil;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 /**
- * 自动化工具接口
- * @author zqk
- * @since 2020/2/3
+ * July Doc的Spring Web入口
+ * @author zengxueqi
+ * @date 2017-03-09 15:36
  */
-@RestController
-@RequestMapping("/api")
-public class ApiTestController {
+@RequestMapping("julydoc")
+public class JulyDocSpringController {
+
+    private Logger logger = LoggerFactory.getLogger(JulyDocSpringController.class);
 
     /**
      * 自动化工具方法
@@ -26,8 +26,8 @@ public class ApiTestController {
      * @since: 2020/2/25
      */
     @PostMapping("/test")
+    @ResponseBody
     public ApiResult<String> apiTest(@RequestBody ApiRequestParam apiParam) {
-        System.out.println("===>进来了");
         if(Constants.REQUEST_GET.equals(apiParam.getMethod())){
             return ApiResult.ok(ApiTestUtil.httpGet(apiParam));
         }else{
